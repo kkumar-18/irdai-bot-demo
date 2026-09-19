@@ -1,0 +1,42 @@
+# Analytical Ratios. Confirmed header format against
+# tests/fixtures/hdfc_life_2025-26_annual.pdf (page 32): ratios are broken
+# down "(i) Linked Business" / "(ii) Non-Linked Business" (Par/Non-Par) with
+# Life/Pension/Health/Var.Ins sub-rows rather than the L-1-style column
+# segments — so segment here comes from the ROW grouping, not a shared
+# column set. Line-item list is a best-effort starting point from the
+# standard IRDAI L-22 layout; expect several to land in the review queue on
+# the first real ingest and get refined from there (see plan verification).
+form: L-22
+uses_shared_segments: false
+segments:
+  - id: linked_business
+    aliases: ["Linked Business", "(i) Linked Business"]
+  - id: nonlinked_par
+    aliases: ["Non-Linked Business - Participating", "Participating"]
+  - id: nonlinked_nonpar
+    aliases: ["Non-Linked Business - Non-Participating", "Non-Participating"]
+  - id: company_wide
+    aliases: ["Total", "Company"]
+line_items:
+  - id: nb_premium_growth_rate
+    aliases: ["New business premium income growth rate"]
+  - id: total_premium_growth_rate
+    aliases: ["Total premium income growth rate", "Growth rate of total premium"]
+  - id: nb_policies_growth_rate
+    aliases: ["New business (number of policies/schemes) growth rate"]
+  - id: commission_ratio
+    aliases: ["Commission Ratio", "Total commission / Total premium"]
+  - id: expense_of_management_ratio
+    aliases: ["Expenses of Management Ratio", "Operating expenses ratio"]
+  - id: policyholder_liabilities_to_shareholder_funds
+    aliases: ["Policyholders' liabilities to shareholders' funds"]
+  - id: total_investments_to_policyholder_liabilities
+    aliases: ["Total investments to Policyholders' liabilities"]
+  - id: solvency_ratio
+    aliases: ["Solvency Ratio", "Available Solvency Margin to Required Solvency Margin ratio"]
+  - id: persistency_ratio_13th_month
+    aliases: ["Persistency Ratio (13th month)"]
+  - id: persistency_ratio_61st_month
+    aliases: ["Persistency Ratio (61st month)"]
+  - id: nb_expense_to_total_expense
+    aliases: ["Conservation Ratio"]

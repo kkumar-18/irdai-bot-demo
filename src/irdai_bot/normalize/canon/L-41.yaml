@@ -1,0 +1,51 @@
+# Grievance Disposal. Confirmed verbatim against
+# tests/fixtures/hdfc_life_2025-26_annual.pdf (page 81). Note: the source
+# PDF's column-header text on this specific page has unusually wide
+# character spacing that breaks pdfplumber's word tokenization (letters come
+# back as separate "words"), so extracted column labels for this form are
+# expected to be noisier than other forms until that's addressed — flagged
+# in extract/pdf.py.
+form: L-41
+uses_shared_segments: false
+segments:
+  - id: death_claims
+    aliases: ["a) Death claims"]
+  - id: policy_servicing
+    aliases: ["b) Policy servicing"]
+  - id: proposal_processing
+    aliases: ["c) Proposal processing"]
+  - id: survival_claims
+    aliases: ["d) Survival claims"]
+  - id: ulip_related
+    aliases: ["e) ULIP related"]
+  - id: unfair_business_practices
+    aliases: ["f) Unfair business practices"]
+  - id: other_complaints
+    aliases: ["g) Others"]
+  - id: total_complaints
+    aliases: ["Total Number of complaints"]
+  - id: company_wide
+    aliases: ["Total"]
+line_items:
+  - id: complaints_opening_balance
+    aliases: ["Opening balance as on beginning of the quarter"]
+  - id: complaints_additions_during_quarter
+    aliases: ["Additions during the quarter"]
+  - id: complaints_fully_accepted
+    aliases: ["Complaints resolved/settled during the quarter - Fully Accepted"]
+  - id: complaints_partially_accepted
+    aliases: ["Complaints resolved/settled during the quarter - Partially Accepted"]
+  - id: complaints_rejected
+    aliases: ["Rejected"]
+  - id: complaints_pending_end_of_quarter
+    aliases: ["Complaints pending at the end of the quarter"]
+  - id: complaints_registered_up_to_fy
+    aliases: ["Total Complaints registered up to the financial year"]
+  - id: policies_up_to_current_period
+    aliases: ["Total number of policies up to current period"]
+  - id: claims_up_to_current_period
+    aliases: ["Total number of claims up to current period"]
+  - id: policy_complaints_per_10000_policies
+    aliases: ["Total number of policy complaints (current period) per 10,000 policies (current year)"]
+  - id: claim_complaints_per_10000_claims
+    aliases: ["Total number of claim complaints (current Period) per 10,000 claims registered (current year)"]

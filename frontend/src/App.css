@@ -1,0 +1,337 @@
+.app-shell {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 16px;
+}
+
+.app-header {
+  padding-block: 12px 8px;
+  border-bottom: 1px solid var(--border);
+}
+
+.app-header h1 {
+  margin: 0;
+  font-size: 1.25rem;
+}
+
+.app-subtitle {
+  margin: 4px 0 0;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+}
+
+.api-warning {
+  margin: 8px 0 0;
+  padding: 8px 12px;
+  border-radius: 8px;
+  background: color-mix(in srgb, var(--series-2) 12%, var(--surface-1));
+  color: var(--text-primary);
+  font-size: 0.85rem;
+}
+
+.app-main {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+}
+
+.chat-window {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+.chat-scroll {
+  flex: 1;
+  overflow-y: auto;
+  padding-block: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.empty-state {
+  margin: auto 0;
+  text-align: center;
+  color: var(--text-secondary);
+}
+
+.example-chips {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.example-chip {
+  text-align: left;
+  padding: 10px 14px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: var(--surface-1);
+  color: var(--text-primary);
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.example-chip:hover {
+  border-color: var(--series-1);
+}
+
+.message-row {
+  display: flex;
+}
+
+.message-row--user {
+  justify-content: flex-end;
+}
+
+.message-row--assistant {
+  justify-content: flex-start;
+}
+
+.bubble {
+  max-width: min(90%, 640px);
+  padding: 10px 14px;
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  font-size: 0.92rem;
+  line-height: 1.5;
+}
+
+/* A bubble with no wide content of its own (a short "here's the chart"
+   reply, no table) otherwise shrinks to fit that short text, squeezing its
+   chart(s) into a sliver a few bars wide — confirmed live: bars rendered
+   with fully correct geometry/color even at ~180px, just too thin to see.
+   Chart-bearing bubbles get a floor width instead, independent of their text. */
+.bubble:has(.chart-figure) {
+  min-width: min(90%, 520px);
+}
+
+.bubble--user {
+  background: var(--bubble-user-bg);
+}
+
+.bubble--assistant {
+  background: var(--bubble-assistant-bg);
+}
+
+.bubble--error {
+  border-color: var(--series-2);
+}
+
+/* The agent always opens each answer (and each domain-section within a
+   mixed-domain answer) with a heading naming which domain — disclosure vs
+   quote comparison — and which insurer(s)/product(s) it answered, per
+   analysis_graph.py's SYSTEM_PROMPT. Styled to read as a clear label rather
+   than ordinary bold text, so the domain is visible before the answer body. */
+.markdown h1,
+.markdown h2,
+.markdown h3 {
+  margin: 0 0 8px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid var(--border);
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.markdown h1:not(:first-child),
+.markdown h2:not(:first-child),
+.markdown h3:not(:first-child) {
+  margin-top: 16px;
+}
+
+.markdown p {
+  margin: 0 0 8px;
+}
+
+.markdown p:last-child {
+  margin-bottom: 0;
+}
+
+.markdown table {
+  border-collapse: collapse;
+  width: 100%;
+  font-size: 0.85rem;
+  margin: 8px 0;
+}
+
+.markdown th,
+.markdown td {
+  border: 1px solid var(--gridline);
+  padding: 4px 8px;
+  text-align: right;
+}
+
+.markdown th:first-child,
+.markdown td:first-child {
+  text-align: left;
+}
+
+.flagged-note {
+  margin: 8px 0 0;
+  padding: 6px 10px;
+  border-radius: 8px;
+  background: color-mix(in srgb, var(--series-4) 15%, var(--surface-1));
+  color: var(--text-secondary);
+  font-size: 0.78rem;
+}
+
+.chart-figure {
+  margin: 12px 0 0;
+  padding-top: 8px;
+  border-top: 1px solid var(--gridline);
+}
+
+.chart-title {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  margin-bottom: 4px;
+}
+
+.typing-indicator {
+  display: inline-flex;
+  gap: 4px;
+  align-items: center;
+  padding: 4px 0;
+}
+
+.typing-indicator span {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--text-muted);
+  animation: typing-bounce 1.2s infinite ease-in-out;
+}
+
+.typing-indicator span:nth-child(2) {
+  animation-delay: 0.15s;
+}
+
+.typing-indicator span:nth-child(3) {
+  animation-delay: 0.3s;
+}
+
+@keyframes typing-bounce {
+  0%,
+  80%,
+  100% {
+    transform: translateY(0);
+    opacity: 0.5;
+  }
+  40% {
+    transform: translateY(-4px);
+    opacity: 1;
+  }
+}
+
+.composer {
+  display: flex;
+  gap: 8px;
+  padding-block: 12px;
+  border-top: 1px solid var(--border);
+}
+
+.composer-input {
+  flex: 1;
+  padding: 10px 14px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: var(--surface-1);
+  color: var(--text-primary);
+  font-size: 0.92rem;
+}
+
+.composer-input:focus {
+  outline: 2px solid var(--series-1);
+  outline-offset: -1px;
+}
+
+.composer-send {
+  padding: 10px 18px;
+  border-radius: 10px;
+  border: none;
+  background: var(--series-1);
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.composer-send:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.fetch-status {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px 12px;
+  margin-top: 12px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: color-mix(in srgb, var(--series-1) 8%, var(--surface-1));
+}
+
+.fetch-status-text {
+  min-width: 0;
+  flex: 1 1 220px;
+}
+
+.fetch-status-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+  font-weight: 600;
+  font-size: 0.88rem;
+}
+
+.fetch-status-detail {
+  margin: 2px 0 0;
+  color: var(--text-secondary);
+  font-size: 0.78rem;
+}
+
+.reload-button {
+  padding: 6px 14px;
+  border-radius: 8px;
+  border: 1px solid var(--series-1);
+  background: var(--surface-1);
+  color: var(--series-1);
+  font-weight: 600;
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+
+.reload-button:hover:not(:disabled) {
+  background: var(--series-1);
+  color: white;
+}
+
+.reload-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.spinner {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 2px solid var(--gridline);
+  border-top-color: var(--series-1);
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

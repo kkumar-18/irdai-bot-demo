@@ -1,0 +1,27 @@
+.DS_Store
+
+# Python-generated files
+__pycache__/
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
+
+# Virtual environments
+.venv
+
+# Secrets
+.env
+keys.txt
+
+# Data
+data/raw/
+data/checkpoints/
+data/review/
+data/*.duckdb
+data/*.duckdb.wal
+
+# Frontend
+frontend/node_modules/
+frontend/dist/

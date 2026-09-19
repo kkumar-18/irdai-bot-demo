@@ -1,0 +1,58 @@
+# Revenue Account. Line items confirmed against a real extraction of
+# tests/fixtures/hdfc_life_2025-26_annual.pdf (page 4, "FOR THE YEAR ENDED
+# MARCH 31, 2026"). Uses the shared segments.yaml (18 columns).
+form: L-1-A-RA
+uses_shared_segments: true
+line_items:
+  - id: premium_income_gross
+    aliases: ["(a) Premium", "Premium"]
+  - id: reinsurance_ceded
+    aliases: ["(b) Reinsurance ceded"]
+  - id: reinsurance_accepted
+    aliases: ["(c) Reinsurance accepted"]
+  - id: premiums_earned_net
+    aliases: ["Premiums earned - net", "Sub Total"]
+  - id: income_from_investments
+    aliases: ["Income from investments", "Interest, dividends & rent - gross"]
+  - id: profit_on_sale_of_investments
+    aliases: ["Profit on sale / redemption of investments"]
+  - id: loss_on_sale_of_investments
+    aliases: ["(Loss on sale / redemption of investments)"]
+  - id: fair_value_change
+    aliases: ["Transfer / gain on revaluation / change in fair value"]
+  - id: amortisation_premium_discount
+    aliases: ["Amortisation of (premium) / discount on investments"]
+  - id: other_income
+    aliases: ["Other Income", "Others"]
+  - id: contribution_from_shareholders
+    aliases: ["Contribution from Shareholders' A/c"]
+  - id: total_income
+    aliases: ["TOTAL (A)"]
+  - id: commission
+    aliases: ["Commission"]
+  - id: operating_expenses
+    aliases: ["Operating expenses related to insurance business"]
+  - id: provision_for_doubtful_debts
+    aliases: ["Provision for doubtful debts"]
+  - id: bad_debts_written_off
+    aliases: ["Bad debts written off"]
+  - id: provision_for_tax
+    aliases: ["Provision for tax"]
+  - id: provisions_other
+    aliases: ["Provisions (other than taxation)"]
+  - id: gst_on_ulip_charges
+    aliases: ["Goods and Services Tax on ULIP Charges"]
+  - id: total_expenses
+    aliases: ["TOTAL (B)"]
+  - id: benefits_paid_net
+    aliases: ["Benefits paid (net)"]
+  - id: interim_bonuses_paid
+    aliases: ["Interim bonuses paid"]
+  - id: terminal_bonuses_paid
+    aliases: ["Terminal bonuses paid"]
+  - id: change_in_valuation_liability
+    aliases: ["Change in valuation of liability against life policies"]
+  - id: total_benefits_and_change_in_liability
+    aliases: ["TOTAL (C)"]
+  - id: surplus_deficit
+    aliases: ["SURPLUS / (DEFICIT) (D) = (A)-(B)-(C)"]

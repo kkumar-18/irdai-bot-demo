@@ -1,0 +1,46 @@
+# Shared segment vocabulary for the forms that break figures down by product
+# category (L-1, L-4, L-22) — confirmed against the real column structure in
+# tests/fixtures/hdfc_life_2025-26_annual.pdf's L-1-A-RA page: 18 sub-columns
+# grouped as Linked Business (Life/Pension/Health/Var.Ins/Total — no annuity
+# column), then Non-Linked Participating and Non-Participating (each
+# Life/Annuity/Pension/Health/Var.Ins/Total), plus one Grand Total. Group
+# order verified from the header words' x-positions on both insurers' pages. Note there is no distinct "Protection" segment column
+# in this form — non-par term/protection business is folded into
+# nonpar_life, not broken out separately (see README caveat).
+segments:
+  - id: linked_life
+    aliases: ["LINKED LIFE", "LINKED LIFE"]
+  - id: linked_pension
+    aliases: ["LINKED PENSION", "LINKED PENSION"]
+  - id: linked_health
+    aliases: ["LINKED HEALTH", "LINKED HEALTH"]
+  - id: linked_var_ins
+    aliases: ["LINKED VAR. INS", "LINKED VAR. INS"]
+  - id: linked_total
+    aliases: ["LINKED TOTAL", "LINKED TOTAL"]
+  - id: par_life
+    aliases: ["PARTICIPATING LIFE", "PAR LIFE"]
+  - id: par_annuity
+    aliases: ["PARTICIPATING ANNUITY", "PAR ANNUITY"]
+  - id: par_pension
+    aliases: ["PARTICIPATING PENSION", "PAR PENSION"]
+  - id: par_health
+    aliases: ["PARTICIPATING HEALTH", "PAR HEALTH"]
+  - id: par_var_ins
+    aliases: ["PARTICIPATING VAR. INS", "PAR VAR. INS"]
+  - id: par_total
+    aliases: ["PARTICIPATING TOTAL", "PAR TOTAL"]
+  - id: nonpar_life
+    aliases: ["NON-PARTICIPATING LIFE", "NON PAR LIFE"]
+  - id: nonpar_annuity
+    aliases: ["NON-PARTICIPATING ANNUITY", "NON PAR ANNUITY"]
+  - id: nonpar_pension
+    aliases: ["NON-PARTICIPATING PENSION", "NON PAR PENSION"]
+  - id: nonpar_health
+    aliases: ["NON-PARTICIPATING HEALTH", "NON PAR HEALTH"]
+  - id: nonpar_var_ins
+    aliases: ["NON-PARTICIPATING VAR. INS", "NON PAR VAR. INS"]
+  - id: nonpar_total
+    aliases: ["NON-PARTICIPATING TOTAL", "NON PAR TOTAL"]
+  - id: grand_total
+    aliases: ["GRAND TOTAL", "TOTAL"]

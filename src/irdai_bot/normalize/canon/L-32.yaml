@@ -1,0 +1,29 @@
+# Available Solvency Margin and Solvency Ratio. Confirmed verbatim against
+# tests/fixtures/hdfc_life_2025-26_annual.pdf (page 63) — company-wide
+# ("Classification: Total Business"), no product/segment breakdown.
+form: L-32
+uses_shared_segments: false
+segments:
+  - id: company_wide
+    aliases: ["Total Business"]
+line_items:
+  - id: available_assets_policyholders_fund
+    aliases: ["Available assets in Policyholders' fund"]
+  - id: mathematical_reserves
+    aliases: ["Mathematical reserves"]
+  - id: other_liabilities_policyholders
+    aliases: ["Other liabilities"]
+  - id: excess_in_policyholders_funds
+    aliases: ["Excess in Policyholders' funds"]
+  - id: available_assets_shareholders_fund
+    aliases: ["Available assets in Shareholders' fund"]
+  - id: other_liabilities_shareholders
+    aliases: ["Other liabilities of shareholders' fund"]
+  - id: excess_in_shareholders_funds
+    aliases: ["Excess in Shareholders' funds"]
+  - id: total_asm
+    aliases: ["Total ASM", "Total ASM (04)+(07)"]
+  - id: total_rsm
+    aliases: ["Total RSM"]
+  - id: solvency_ratio
+    aliases: ["Solvency Ratio (ASM/RSM)", "Solvency Ratio"]

@@ -1,0 +1,49 @@
+# Quarterly Claims Data for Life. Confirmed verbatim against
+# tests/fixtures/hdfc_life_2025-26_annual.pdf (page 79) — three sub-tables
+# (Death Claims, Individual [by benefit type], Group [by benefit type]).
+# Segment folds claim-type and individual/group together since the facts
+# schema has a single segment axis (e.g. "death_claims_individual").
+form: L-40
+uses_shared_segments: false
+segments:
+  - id: death_claims_individual
+    aliases: ["Death Claims Individual"]
+  - id: death_claims_group
+    aliases: ["Death Claims Group"]
+  - id: survival_benefit_individual
+    aliases: ["Survival Benefit Individual"]
+  - id: maturity_individual
+    aliases: ["Maturity Individual"]
+  - id: surrender_individual
+    aliases: ["Surrender Individual"]
+  - id: annuities_pension_individual
+    aliases: ["Annuities/ Pension Individual"]
+  - id: other_benefits_individual
+    aliases: ["Other Benefits Individual"]
+  - id: maturity_group
+    aliases: ["Maturity Group"]
+  - id: surrender_group
+    aliases: ["Surrender Group"]
+  - id: annuities_pension_group
+    aliases: ["Annuities/ Pension Group"]
+  - id: other_benefits_group
+    aliases: ["Other Benefits Group"]
+line_items:
+  - id: claims_outstanding_opening
+    aliases: ["Claims O/S at the beginning of the period"]
+  - id: claims_booked
+    aliases: ["Claims Intimated / Booked during the period", "Claims Booked during the period"]
+  - id: claims_ageing_lt_3y
+    aliases: ["Less than 3 years from the date of acceptance of risk"]
+  - id: claims_ageing_gt_3y
+    aliases: ["Greater than 3 years from the date of acceptance of risk"]
+  - id: claims_paid
+    aliases: ["Claims Paid during the period"]
+  - id: claims_repudiated
+    aliases: ["Claims Repudiated during the period"]
+  - id: claims_rejected
+    aliases: ["Claims Rejected"]
+  - id: claims_unclaimed
+    aliases: ["Unclaimed"]
+  - id: claims_outstanding_closing
+    aliases: ["Claims O/S at End of the period"]

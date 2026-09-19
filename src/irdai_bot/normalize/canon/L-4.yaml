@@ -1,0 +1,13 @@
+# Premium Schedule. Confirmed against tests/fixtures/hdfc_life_2025-26_annual.pdf
+# (page 9, "FORM L-4-PREMIUM SCHEDULE"). Uses the shared segments.yaml.
+form: L-4
+uses_shared_segments: true
+line_items:
+  - id: first_year_premiums
+    aliases: ["First year premiums"]
+  - id: renewal_premiums
+    aliases: ["Renewal premiums"]
+  - id: single_premiums
+    aliases: ["Single premiums"]
+  - id: total_premium
+    aliases: ["Total premium", "TOTAL"]

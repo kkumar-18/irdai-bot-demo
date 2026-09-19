@@ -1,0 +1,60 @@
+# IRDAI public-disclosure forms for life insurers, by form number.
+#
+# Two disclosure frameworks apply (extract/disclosures.py:schema_version):
+#   v2010 — "Public Disclosures by Insurers" circular (Jan 2010, amended 2011/2012):
+#           older bundles split into "financial" (L-1..L-22) and "other" (L-24..L-42) files.
+#   v2021 — revised instructions superseding it, effective FY2021-22 (quarterly uploads
+#           from the period ending Sep 30, 2021): one L-1..L-45 bundle.
+#
+# Form NUMBERS carry the same meaning in both: verified 2026-09-15 against the page
+# headings of every annual bundle in data/raw (HDFC Life + Axis Max Life, FY2012-13 and
+# FY2019-20..FY2025-26). Only suffixes/wording differ ("L-1" vs "L-1-A-RA" — and the
+# suffixed ids already appear in FY2019-20 v2010 filings, so they don't identify the
+# version), and line items within a form change between versions. L-43..L-45 have no
+# v2010 equivalent. L-23 is absent from some v2010 bundles.
+forms:
+  1: {key: revenue_account, title: "Revenue Account (Policyholders' Account)"}
+  2: {key: profit_and_loss, title: "Profit & Loss Account (Shareholders' Account)"}
+  3: {key: balance_sheet, title: "Balance Sheet"}
+  4: {key: premium_schedule, title: "Premium Schedule"}
+  5: {key: commission_schedule, title: "Commission Schedule"}
+  6: {key: operating_expenses_schedule, title: "Operating Expenses Schedule"}
+  7: {key: benefits_paid_schedule, title: "Benefits Paid Schedule"}
+  8: {key: share_capital_schedule, title: "Share Capital Schedule"}
+  9: {key: pattern_of_shareholding, title: "Pattern of Shareholding Schedule"}
+  10: {key: reserves_and_surplus, title: "Reserves and Surplus Schedule"}
+  11: {key: borrowings, title: "Borrowings Schedule"}
+  12: {key: investments_shareholders, title: "Investments - Shareholders' Schedule"}
+  13: {key: investments_policyholders, title: "Investments - Policyholders' Schedule"}
+  14: {key: assets_held_for_linked_liabilities, title: "Assets Held to Cover Linked Liabilities Schedule"}
+  15: {key: loans, title: "Loans Schedule"}
+  16: {key: fixed_assets, title: "Fixed Assets Schedule"}
+  17: {key: cash_and_bank_balances, title: "Cash and Bank Balances Schedule"}
+  18: {key: advances_and_other_assets, title: "Advances and Other Assets Schedule"}
+  19: {key: current_liabilities, title: "Current Liabilities Schedule"}
+  20: {key: provisions, title: "Provisions Schedule"}
+  21: {key: miscellaneous_expenditure, title: "Miscellaneous Expenditure Schedule"}
+  22: {key: analytical_ratios, title: "Analytical Ratios"}
+  23: {key: receipts_and_payments, title: "Receipts and Payments Schedule"}
+  24: {key: valuation_of_net_liabilities, title: "Valuation of Net Liabilities"}
+  25: {key: geographical_distribution, title: "Geographical Distribution of Business"}
+  26: {key: investment_assets, title: "Investment Assets"}
+  27: {key: unit_linked_business, title: "Unit Linked Business Investments"}
+  28: {key: ulip_nav, title: "ULIP NAV"}
+  29: {key: debt_securities, title: "Debt Securities"}
+  30: {key: related_party_transactions, title: "Related Party Transactions"}
+  31: {key: board_and_key_management, title: "Board of Directors & Key Management Persons"}
+  32: {key: solvency_margin, title: "Available Solvency Margin and Solvency Ratio"}
+  33: {key: npas, title: "Non-Performing Assets"}
+  34: {key: yield_on_investment, title: "Yield on Investment"}
+  35: {key: downgraded_investments, title: "Downgrading of Investments"}
+  36: {key: premium_and_lives_by_policy_type, title: "Premium and Number of Lives Covered by Policy Type"}
+  37: {key: business_acquisition_group, title: "Business Acquisition through Different Channels (Group)"}
+  38: {key: business_acquisition_individual, title: "Business Acquisition through Different Channels (Individual)"}
+  39: {key: claims_settlement_ageing, title: "Data on Settlement of Claims"}
+  40: {key: claims_data, title: "Quarterly Claims Data for Life"}
+  41: {key: grievance_disposal, title: "Grievance Disposal"}
+  42: {key: valuation_basis, title: "Valuation Basis (Life Insurance)"}
+  43: {key: voting_activity, title: "Voting Activity Disclosure under Stewardship Code", versions: [v2021]}
+  44: {key: embedded_value, title: "Embedded Value", versions: [v2021]}
+  45: {key: offices_and_other_information, title: "Offices and Other Information (offices, employees, agents, intermediaries)", versions: [v2021]}
