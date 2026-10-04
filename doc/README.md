@@ -10,6 +10,9 @@ can call. Split into three files so each stays a quick reference, not a wall of 
 - **[tool_call_doc.md](tool_call_doc.md)** — every tool an LLM can call mid-conversation
   (as opposed to a prompt called directly by application code): what it does, and the
   mechanism that actually executes the call.
+- **[sequence_diagram.md](sequence_diagram.md)** — Mermaid sequence diagrams of a chat request
+  end to end (frontend → API → analysis graph → LLM/tools → response) and the background
+  fetch-job flow.
 
 ## Models in use
 

@@ -30,14 +30,15 @@ from __future__ import annotations
 from pathlib import Path
 
 from langchain_core.messages import AIMessage, SystemMessage
-from langchain_openai import ChatOpenAI
 from langgraph.graph import END, START, StateGraph
 from langgraph.prebuilt import ToolNode
 
 from irdai_bot.checkpoint import get_analysis_checkpointer
 from irdai_bot.config import Config
 from irdai_bot.graphs.state import AnalysisState
+from irdai_bot.llm import make_narration_llm
 from irdai_bot.nodes.analysis.grounding import collect_turn_tool_values, find_ungrounded
+from irdai_bot.nodes.analysis.scope_guard import make_scope_guard, route_after_scope_guard
 from irdai_bot.nodes.analysis.tools import (
     FORMS_CARD,
     LINE_ITEM_VOCAB,
@@ -148,13 +149,7 @@ def _route_after_grounding(state: AnalysisState) -> str:
 
 
 def build_analysis_graph(cfg: Config):
-    # reasoning_effort="none": gpt-5.6-terra defaults to a nonzero reasoning
-    # effort that the chat/completions endpoint refuses to combine with tool
-    # calls (confirmed via a real 400: "Function tools with reasoning_effort
-    # are not supported ... set reasoning_effort to 'none'").
-    llm = ChatOpenAI(
-        model=cfg.narration_model, api_key=cfg.openai_api_key, temperature=0, reasoning_effort="none"
-    )
+    llm = make_narration_llm(cfg)
     tools = [
         make_run_sql_tool(cfg.database_url),
         make_fetch_disclosures_tool(cfg),
@@ -163,11 +158,13 @@ def build_analysis_graph(cfg: Config):
     llm_with_tools = llm.bind_tools(tools)
 
     graph = StateGraph(AnalysisState)
+    graph.add_node("scope_guard", make_scope_guard(llm))
     graph.add_node("agent", _agent_node(llm_with_tools))
     graph.add_node("tools", ToolNode(tools))
     graph.add_node("enforce_grounding", _enforce_grounding)
 
-    graph.add_edge(START, "agent")
+    graph.add_edge(START, "scope_guard")
+    graph.add_conditional_edges("scope_guard", route_after_scope_guard, {"agent": "agent", "refused": END})
     graph.add_conditional_edges("agent", _should_continue, {"tools": "tools", "ground": "enforce_grounding"})
     graph.add_edge("tools", "agent")
     graph.add_conditional_edges("enforce_grounding", _route_after_grounding, {"agent": "agent", END: END})

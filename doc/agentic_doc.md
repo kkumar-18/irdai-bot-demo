@@ -42,7 +42,7 @@ outcome, so a genuinely unavailable filing isn't re-scraped on every question.
 
 ### 3. Analysis graph
 
-`agent ⇄ tools` (a ReAct loop: the agent node calls the LLM with tools bound; if it returns
+`scope_guard →` (an LLM topic classifier, [prompts/scope_guard.md](../src/irdai_bot/prompts/scope_guard.md): a non-insurance question gets a fixed "Out of Scope" reply and the graph ends without calling the agent or any tool) `agent ⇄ tools` (a ReAct loop: the agent node calls the LLM with tools bound; if it returns
 a tool call, `tools` executes it and loops back to `agent`; otherwise control moves on) `→
 enforce_grounding`, which either accepts the answer or — if any stated figure doesn't
 trace to a `run_sql`/`fetch_disclosures` result from this turn — injects a

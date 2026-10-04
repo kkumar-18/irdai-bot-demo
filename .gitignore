@@ -25,3 +25,6 @@ data/*.duckdb.wal
 # Frontend
 frontend/node_modules/
 frontend/dist/
+.claude
+
+evals/

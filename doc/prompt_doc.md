@@ -55,6 +55,18 @@ structured output) — the model replies with either a tool call or a final narr
 - **Defined:** [graphs/analysis_graph.py:38](../src/irdai_bot/graphs/analysis_graph.py#L38) (`SYSTEM_PROMPT`), assembled from `SCHEMA_CARD`, `LINE_ITEM_VOCAB`, and `FORMS_CARD` (all in [nodes/analysis/tools.py](../src/irdai_bot/nodes/analysis/tools.py)).
 - **Called from:** the `agent` node of the [analysis_graph](agentic_doc.md#3-analysis-graph), prepended to the conversation on every turn.
 
+### 5. Scope guard prompt
+
+A strict topic classifier that runs before the chat agent on every turn. It decides whether
+the new message is about insurance, a follow-up within an insurance conversation, or a
+greeting. Anything else, including attempts to override the rules, gets a fixed "Out of
+Scope" reply and the agent never runs. The chat agent prompt (4) repeats the same scope
+rules as a second line of defence.
+
+- **Model:** narration model, structured output (`ScopeVerdict {in_scope: bool}`).
+- **Defined:** [prompts/scope_guard.md](../src/irdai_bot/prompts/scope_guard.md), loaded by [nodes/analysis/scope_guard.py](../src/irdai_bot/nodes/analysis/scope_guard.py).
+- **Called from:** the `scope_guard` node of the [analysis_graph](agentic_doc.md#3-analysis-graph). The classifier sees the new message plus the last 6 user and assistant messages, each cut to 300 characters, so follow-ups like "plot that" stay in scope. If the classifier call fails, the turn goes to the agent.
+
 ---
 
 ## Not a prompt
